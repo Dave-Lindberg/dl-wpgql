@@ -8,6 +8,10 @@ export default function BlogPost({ data}) {
     return (
         <Layout>
             <div>
+                <img 
+                    src={post.featuredImage.node.localFile.childImageSharp.sizes.src} 
+                    alt={post.featuredImage.altText}
+                />
                 <h1>{post.title}</h1>
                 <div dangerouslySetInnerHTML={{ __html: post.content}} />
             </div>
@@ -20,6 +24,20 @@ export const query = graphql`
             nodes {
                 title
                 content
+                featuredImage {
+                    node {
+                        altText
+                        sourceUrl
+                        localFile {
+                            childImageSharp {
+                                id
+                                sizes {
+                                    src
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
