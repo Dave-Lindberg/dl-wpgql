@@ -13,6 +13,7 @@ module.exports = {
          * Example : 'https://www.example-site.com/graphql'
          */
         url: `http://gatsbywpsource.local/graphql`,
+        verbose: true,
       },
     },
    `gatsby-plugin-react-helmet`,
