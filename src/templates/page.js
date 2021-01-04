@@ -2,33 +2,30 @@ import React from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 
-export default function BlogPost({ data}) {
+export default function Page({ data}) {
     console.log("data = " + data)
-    const post = data.allWpPost.nodes[0]
-    console.log(post)
+    const page = data.allWpPage.nodes[0]
+    console.log(page)
     return (
         <Layout>
-            <div>
-                <img 
-                    src={post.featuredImage.node.localFile.childImageSharp.sizes.src} 
-                    alt={post.featuredImage.altText}
-                />
-                <h1>{post.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: post.content}} />
-            </div>
+            <img 
+                src={page.featuredImage.node.localFile.childImageSharp.sizes.src} 
+                alt={page.featuredImage.node.altText}
+            />
+            <h1>{page.title}</h1>
+            <div dangerouslySetInnerHTML={{ __html: page.content}} />
         </Layout>
-    )
+    )  
 }
 export const query = graphql`
     query($slug: String!) {
-        allWpPost(filter: { slug: { eq: $slug } }) {
+        allWpPage(filter: { slug: { eq: $slug } }) {
             nodes {
                 title
                 content
                 featuredImage {
                     node {
                         altText
-                        sourceUrl
                         localFile {
                             childImageSharp {
                                 id

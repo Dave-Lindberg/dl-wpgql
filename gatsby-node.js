@@ -20,8 +20,27 @@ exports.createPages = ({ graphql, actions }) => {
                     slug
                 }
             }
+            allWpPage {
+                nodes {
+                    title
+                    content
+                    slug
+                    featuredImage {
+                        node {
+                            localFile {
+                                childImageSharp {
+                                    sizes {
+                                        src
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     `).then((result) => {
+        console.log(result)
         result.data.allWpPost.nodes.forEach((node) => {
             createPage({
                 path: node.slug,
@@ -29,6 +48,17 @@ exports.createPages = ({ graphql, actions }) => {
                 context: {
                     // This is the $slug variable
                     // passed to blog-post.js
+                    slug: node.slug,
+                },
+            })
+        })
+        result.data.allWpPage.nodes.forEach((node) => {
+            createPage({
+                path: node.slug,
+                component: path.resolve(`./src/templates/page.js`),
+                context: {
+                    // This is the $slug variable
+                    // passed to page.js
                     slug: node.slug,
                 },
             })
