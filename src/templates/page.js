@@ -36,6 +36,10 @@ export default function Page({ data}) {
             />
             <h1>{page.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: page.content}} />
+                        © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.com">Gatsby</a>
+
         </Layout>
     )  
 }

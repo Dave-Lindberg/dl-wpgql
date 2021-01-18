@@ -15,6 +15,10 @@ export default function BlogPost({ data}) {
                 />
                 <h1>{post.title}</h1>
                 <div dangerouslySetInnerHTML={{ __html: post.content}} />
+                            © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.com">Gatsby</a>
+
             </div>
         </Layout>
     )

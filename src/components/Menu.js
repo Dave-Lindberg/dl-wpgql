@@ -1,7 +1,12 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-
-import MenuItem from "./MenuItem"
+import {
+    Menu,
+    MenuItem,
+    MenuButton
+} from '@szhsin/react-menu';
+import '@szhsin/react-menu/dist/index.css';
+import { MdMenu } from 'react-icons/md';
 
 /**
  * Define MenuItem fragment and get all primary menu items.
@@ -26,7 +31,7 @@ const MENU_QUERY = graphql`
 `
 
 
-const Menu = () => {
+const SiteMenu = () => {
     return (
         <StaticQuery 
             query={MENU_QUERY}
@@ -34,20 +39,22 @@ const Menu = () => {
                 if(data.allWpMenuItem) {
                     const menuItems = data.allWpMenuItem.nodes
                     const wordPressUrl = data.allWpMenuItem.nodes.url
+                    console.log(data)
 
                     return (
-                        <div style={{ marginBottom: "20px"}}>
+                        <Menu menuButton={
+                            ({ open }) => 
+                            <MenuButton>{open ? "X" : <MdMenu />}</MenuButton>}>
                             {
                                 menuItems &&
                                 menuItems.map((menuItem) => (
                                     <MenuItem 
                                         key={menuItem.id} 
-                                        menuItem={menuItem} 
-                                        wordPressUrl={wordPressUrl}
-                                    />
+                                        href={menuItem.url}
+                                    >{menuItem.label}</MenuItem>
                                 ))
                             }
-                        </div>
+                        </Menu>
                     )
                 }
                 return null
@@ -56,4 +63,4 @@ const Menu = () => {
     )
 }
 
-export default Menu
+export default SiteMenu
