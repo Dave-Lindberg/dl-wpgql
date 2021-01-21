@@ -2,6 +2,8 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { Box, Text } from "@chakra-ui/react";
+
 
 export default function Home({ data }) {
   return (

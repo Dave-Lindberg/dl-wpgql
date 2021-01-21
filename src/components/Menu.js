@@ -5,7 +5,7 @@ import {
     MenuItem,
     MenuButton
 } from '@szhsin/react-menu';
-import '@szhsin/react-menu/dist/index.css';
+import '../styles/menu.css';
 import { MdMenu } from 'react-icons/md';
 
 /**
@@ -44,6 +44,7 @@ const SiteMenu = () => {
                     return (
                         <Menu menuButton={
                             ({ open }) => 
+                            
                             <MenuButton>{open ? "X" : <MdMenu />}</MenuButton>}>
                             {
                                 menuItems &&

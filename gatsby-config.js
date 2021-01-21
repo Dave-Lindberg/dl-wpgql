@@ -5,6 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `@chakra-ui/gatsby-plugin`,
     {
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
@@ -16,7 +17,7 @@ module.exports = {
         verbose: true,
       },
     },
-   `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

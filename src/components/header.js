@@ -14,7 +14,7 @@ const Header = ({ siteTitle }) => (
       style={{
         margin: `0 auto`,
         maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        padding: `1.5rem 1rem`,
       }}
     >
       <h1 style={{ margin: 0 }}>
@@ -25,17 +25,18 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
             display: `grid`,
             alignItems: `center`,
-            gridTemplateColumns: `2.5rem 1fr`,
-            gridTemplateAreas: `"a b"
-                                "c d"`,
+            gridTemplateColumns: `2.5rem 1fr 1fr`,
+            gridGap: `.5rem`,
+            gridTemplateAreas: `"a b c"
+                                "d b c"`,
           }}
         >
           <span 
             style={{ 
-              color: `rgba(255,255,255,0.5)`,
+              color: `rgba(255,255,255,0.6)`,
               fontWeight: 900,
               fontSize: `75%`,
-              border: `solid rgba(255,255,255,0.5) .2rem`,
+              border: `solid rgba(255,255,255,0.6) .2rem`,
               borderRadius: `100%`,
               padding:`.15rem`,
               marginRight: `.5rem`,
@@ -54,10 +55,10 @@ const Header = ({ siteTitle }) => (
           <div 
             style={{ 
               fontWeight: 100,
-              fontSize:`90%`,
-              gridArea: `d`,
+              gridArea: `c`,
+              color: `rgba(255,255,255,0.6)`,
             }}> 
-            frontend&nbsp;developer
+            frontend developer
           </div>
         </Link>
       </h1>
