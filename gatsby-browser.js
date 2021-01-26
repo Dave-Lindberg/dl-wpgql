@@ -5,3 +5,6 @@
  */
 
 // You can delete this file if you're not using it
+
+import { wrapPageElement as wrap } from './src/theme-wrapper'
+export const wrapPageElement = wrap

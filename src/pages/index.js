@@ -1,25 +1,28 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 
 export default function Home({ data }) {
   return (
-    <Layout>
+    <div>
       <SEO title = "home" />
-      <h1>My WordPress Blog</h1>
+      <Box p={8}>
+        <h1>My WordPress Blog</h1>
+      </Box>
       <h4>Posts</h4>
       {data.allWpPost.nodes.map((node) => (
         <div key={node.slug}>
-          <Link to={node.slug}>
-            <h2>{node.title}</h2>
-          </Link>
+          <Box p={8} bg='antiqueWhite' mb={8}>
+            <Link to={node.slug}>
+              <h2>{node.title}</h2>
+            </Link>
           <div dangerouslySetInnerHTML={{__html: node.excerpt}} />
+          </Box>
         </div>
       ))}
-    </Layout>
+    </div>
   )
 }
 

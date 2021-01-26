@@ -38,7 +38,6 @@ const SiteMenu = () => {
             render={(data) => {
                 if(data.allWpMenuItem) {
                     const menuItems = data.allWpMenuItem.nodes
-                    const wordPressUrl = data.allWpMenuItem.nodes.url
                     console.log(data)
 
                     return (

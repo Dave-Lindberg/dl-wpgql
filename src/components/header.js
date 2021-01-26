@@ -1,13 +1,18 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { GridItem } from "@chakra-ui/react"
 
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `lightslategrey`,
-      marginBottom: `1rem`,
-      gridArea: `header`
+  <GridItem 
+    as="header" 
+    bg="brand.800" 
+    mb="1rem" 
+    area="header"
+    colStart="1"
+    colEnd={{
+      base: "1",
+      md: "4"
     }}
   >
     <div
@@ -63,7 +68,7 @@ const Header = ({ siteTitle }) => (
         </Link>
       </h1>
     </div>
-  </header>
+  </GridItem>
 )
 
 Header.propTypes = {

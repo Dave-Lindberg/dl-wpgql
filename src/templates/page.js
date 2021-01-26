@@ -1,5 +1,4 @@
 import React from "react"
-import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
 
 export default function Page({ data}) {
@@ -8,28 +7,27 @@ export default function Page({ data}) {
     console.log(page)
     if (page.title === "Stories") {
         return (
-            <Layout>
+            <div>
                 <h1>This is the blog page</h1>
-      <h4>Posts</h4>
-      {data.allWpPost.nodes.map((node) => (
-        <div key={node.slug}>
-          <Link to={node.slug}>
-              <img 
-                src={node.featuredImage.node.localFile.childImageSharp.sizes.src} 
-                alt={node.featuredImage.node.altText}
-            />
-            <h2>{node.title}</h2>
-          </Link>
-          <div dangerouslySetInnerHTML={{__html: node.excerpt}} />
-        </div>
-      ))}
-
-            </Layout>
+                <h4>Posts</h4>
+                {data.allWpPost.nodes.map((node) => (
+                    <div key={node.slug}>
+                    <Link to={node.slug}>
+                        <img 
+                            src={node.featuredImage.node.localFile.childImageSharp.sizes.src} 
+                            alt={node.featuredImage.node.altText}
+                        />
+                        <h2>{node.title}</h2>
+                    </Link>
+                    <div dangerouslySetInnerHTML={{__html: node.excerpt}} />
+                    </div>
+                ))}
+            </div>
         )
     }
 
     return (
-        <Layout>
+        <div>
             <img 
                 src={page.featuredImage.node.localFile.childImageSharp.sizes.src} 
                 alt={page.featuredImage.node.altText}
@@ -40,7 +38,7 @@ export default function Page({ data}) {
             {` `}
             <a href="https://www.gatsbyjs.com">Gatsby</a>
 
-        </Layout>
+        </div>
     )  
 }
 export const query = graphql`
