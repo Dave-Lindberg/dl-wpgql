@@ -2,12 +2,13 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import SEO from "../components/seo"
 import { Box } from "@chakra-ui/react";
-
+import AnimatedHeadline from "../components/animated-headline"
 
 export default function Home({ data }) {
   return (
     <div>
       <SEO title = "home" />
+      <AnimatedHeadline />
       <Box p={8}>
         <h1>My WordPress Blog</h1>
       </Box>

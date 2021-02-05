@@ -31,6 +31,7 @@ const Layout = ({ children }) => {
     <>
       <Grid as ="app" 
           height="100vh"
+          bg="brand.background"
           templateRows={{
             base:"auto auto 1fr auto auto",
             md: "auto 1fr auto"
@@ -48,19 +49,17 @@ const Layout = ({ children }) => {
         >
           <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
 
-          <GridItem as="sidebar" area="sidebar" bg="brand.700">
-            sidebar
+          <GridItem as="sidebar" area="sidebar" color="brand.grey.100">
           </GridItem>
 
           <GridItem as="main" area="main" 
             overflow="scroll" 
-            padding="1em" 
-            bg="red.300" >
+            padding="0" 
+          >
             {children}
           </GridItem>
 
-          <GridItem as="sidebarRight" area="sidebar-right" bg="green.700">
-            sidebar-right
+          <GridItem as="sidebarRight" area="sidebar-right" color="brand.grey.100">
           </GridItem>
 
           <GridItem 
@@ -71,8 +70,9 @@ const Layout = ({ children }) => {
               base: "1",
               md: "4"
             }}
-            bg="yellow.300" 
-            p="1rem">
+            p="1rem"
+            borderTop="1px"
+            borderColor="brand.grey.100">
             <SiteMenu />
           </GridItem>
       </Grid>
