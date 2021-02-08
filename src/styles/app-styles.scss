@@ -3,3 +3,9 @@
 body {
   background-color: cornsilk;
 }
+.main {
+  overflow: scroll;
+  @media screen and (min-width: 48em) {
+    overflow: visible;
+  }
+}

@@ -6,26 +6,26 @@ import { GridItem, Grid, Box } from "@chakra-ui/react"
 const Header = ({ siteTitle }) => (
   <GridItem 
     as="header" 
-    bg="brand.olive.700" 
-    mb="0rem" 
-    p="1.5rem 2rem 1rem"
-    area="header"
+    width="100%"
+    m="0 auto" 
+    p={{
+      base: "1.5rem 1.5rem 1rem",
+      md: "1.5rem 2rem 1rem"
+    }}
     borderBottom="1px"
     borderColor="brand.olive.400"
     fontSize="110%"
     lineHeight="110%"
-    colStart="1"
-    colEnd={{
-      base: "1",
-      md: "4"
-    }}
   >
     <Grid
-        m="0 auto"
+        m={0}
         maxW="960px"
-        templateColumns="2.66rem auto auto"
+        templateColumns={{
+          base: "2rem auto auto",
+          md: "2rem 8rem auto"
+        }}
         templateRows="auto "
-        gap=".25rem"
+        gap="1rem"
         alignItems="center"
         
     >
@@ -34,11 +34,11 @@ const Header = ({ siteTitle }) => (
         display="grid"
       >
         <Box 
-          color="rgba(255,255,255,0.6)"
+          color="brand.salmon.400"
           fontSize="100%"
           fontWeight="900"
           border=".2rem solid" 
-          borderColor="rgba(255,255,255,0.6)" 
+          borderColor="brand.salmon.400" 
           borderRadius="100%"
           p=".15rem"
           mr=".5rem"
@@ -58,7 +58,7 @@ const Header = ({ siteTitle }) => (
         <GridItem 
           colStart={2}
           colSpan={1}
-          color="#ffffff"
+          color="brand.olive.700"
           fontWeight={700}
         >
           {siteTitle} 
@@ -71,7 +71,7 @@ const Header = ({ siteTitle }) => (
         colSpan={1}
         rowStart={1}
         rowSpan={1}
-        color="rgba(255,255,255,0.6)"
+        color="brand.sand.700"
       >
         frontend developer
       </GridItem>

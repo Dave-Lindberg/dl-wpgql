@@ -34,18 +34,18 @@ const AnimatedHeadline = () => {
             className="animated-headline" 
             width="100vw"
             height="80vh"
-            color="brand.grey.700"
             fontSize="125%"
             fontWeight={700}
             display="flex"
             alignItems="center"
+            justifyContent="center"
             textAlign="center"
             p="20% 20% 25%"
         >
             <MotionGrid 
                 className="animated-headline"
                 gridTemplateColumns="1fr"
-                gridTemplateRows="auto auto auto"
+                gridTemplateRows="auto auto 5rem"
                 initial="hidden"
                 animate="visible"
                 exit="visible"
@@ -59,18 +59,33 @@ const AnimatedHeadline = () => {
                     animate={{
                         opacity: [0, 1, 1, 0],
                     }}
-                    exit="hidden"
                     transition={{ duration: 6 }}
                     color="brand.blue.700"
+                    exit="hidden"
                 >
                     Communicating your message
                 </MotionGridItem>
+                <MotionGridItem 
+                    gridRow="2 / 3"
+                    gridColumn="1 / 2"
+                    variants={item}
+                    initial="hidden"
+                    animate={{
+                        opacity: [0, 1, 1, 0],
+                    }}
+                    transition={{ duration: 6, delay: 1 }}
+                    color="brand.blue.700"
+                    exit="hidden"
+                >
+                    takes more than a website.
+                </MotionGridItem>                
+                
                 <MotionGridItem 
                     gridRow="1 / 2"
                     gridColumn="1 / 2"
                     variants={item}
                     animate={{
-                        opacity: [0, 1, 0],
+                        opacity: [0, 1, 1, 0],
                     }}
                     exit="hidden"
                     transition={{ duration: 6, delay: 4 }}
@@ -79,11 +94,26 @@ const AnimatedHeadline = () => {
                     Engaging your stakeholders
                 </MotionGridItem>
                 <MotionGridItem 
+                    gridRow="2 / 3"
+                    gridColumn="1 / 2"
+                    variants={item}
+                    initial="hidden"
+                    animate={{
+                        opacity: [0, 1, 1, 0],
+                    }}
+                    transition={{ duration: 6, delay: 5 }}
+                    color="brand.olive.700"
+                    exit="hidden"
+                >
+                    takes more than a website.
+                </MotionGridItem>                
+
+                <MotionGridItem 
                     gridRow="1 / 2"
                     gridColumn="1 / 2"
                     variants={item}
                     animate={{
-                        opacity: [0, 1, 0],
+                        opacity: [0, 1, 1, 0],
                     }}
                     exit="hidden"
                     transition={{ duration: 6, delay: 8 }}
@@ -92,9 +122,25 @@ const AnimatedHeadline = () => {
                     Building your business
                 </MotionGridItem>
                 <MotionGridItem 
+                    gridRow="2 / 3"
+                    gridColumn="1 / 2"
+                    variants={item}
+                    initial="hidden"
+                    animate={{
+                        opacity: [0, 1, 1, 0],
+                    }}
+                    transition={{ duration: 6, delay: 9 }}
+                    color="brand.sand.700"
+                    exit="hidden"
+                >
+                    takes more than a website.
+                </MotionGridItem>                
+
+                <MotionGridItem 
                     gridRow="1 / 2"
                     gridColumn="1 / 2"
                     variants={item}
+                    initial="hidden"
                     animate={{
                         opacity: [0, 1],
                     }}
@@ -102,30 +148,30 @@ const AnimatedHeadline = () => {
                     color="brand.salmon.700"
                 >
                     Captivating your users
-                </MotionGridItem>                
+                </MotionGridItem>  
                 <MotionGridItem 
                     gridRow="2 / 3"
+                    gridColumn="1 / 2"
                     variants={item}
+                    initial="hidden"
                     animate={{
-                        opacity: [0, 1, 1],
-                        color: ["#577B75", "#577B75","#787800", "#C2A052", "#C34E1E"]
+                        opacity: [0, 1 ],
                     }}
-                    transition={{ duration: 18, delay: 0, ease: "easeOut" }}
-                    exit="visible"
-
+                    transition={{ duration: 3, delay: 13 }}
+                    color="brand.salmon.700"
                 >
                     takes more than a website.
                 </MotionGridItem>                
+
                 <MotionGridItem 
                     gridRow="3 / 4"
                     variants={item}
                     animate={{
-                        opacity: [0, 1],
+                        opacity: [0.1, 1],
                     }}
-                    transition={{ delay: 18, ease: "easeOut" }}
+                    transition={{ duration: 3, delay: 16 }}
                     exit="visible"
                     justifySelf="center"
-
                 >
                     <a href="#">
                         <MdArrowDownward 
