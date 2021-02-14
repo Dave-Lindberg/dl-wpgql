@@ -12,7 +12,6 @@ import { Grid, GridItem } from "@chakra-ui/react"
 
 import Header from "./header"
 import SiteMenu from "./Menu"
-
 import "../styles/app-styles.css"
 
 const Layout = ({ children }) => {
@@ -28,7 +27,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Grid as ="app" 
+      <Grid as ="AppGrid" 
           height="100vh"
           bg="brand.background"
           templateAreas={{

@@ -1,8 +1,8 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
 import SEO from "../components/seo"
-import { Box } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import AnimatedHeadline from "../components/animated-headline"
+import FeaturedStories from "../components/featured-stories"
 
 export default function Home({ data }) {
   return (
@@ -10,31 +10,10 @@ export default function Home({ data }) {
       <SEO title = "home" />
       <AnimatedHeadline />
       <Box p={8}>
-        <h1>My WordPress Blog</h1>
+        <Heading as="h3" size="sm">Featured Stories</Heading>
       </Box>
-      <h4>Posts</h4>
-      {data.allWpPost.nodes.map((node) => (
-        <div key={node.slug}>
-          <Box p={8} bg='antiqueWhite' mb={8}>
-            <Link to={node.slug}>
-              <h2>{node.title}</h2>
-            </Link>
-          <div dangerouslySetInnerHTML={{__html: node.excerpt}} />
-          </Box>
-        </div>
-      ))}
+      <FeaturedStories />
     </div>
   )
 }
 
-export const pageQuery = graphql`
-query {
-  allWpPost(sort: { fields: [date] }) {
-    nodes {
-      title
-      excerpt
-      slug
-    }
-  }
-}
-`
