@@ -7,7 +7,7 @@ module.exports = {
   plugins: [
     `@chakra-ui/gatsby-plugin`,
     {
-      resolve: `gatsby-source-wordpress-experimental`,
+      resolve: `gatsby-source-wordpress`,
       options: {
         /*
          * The full URL of the WordPress site's GraphQL API.
