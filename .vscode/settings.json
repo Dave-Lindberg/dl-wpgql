@@ -1,0 +1,10 @@
+{
+  "prettier.enable": false,
+  "eslint.alwaysShowStatus": true,
+  "eslint.codeActionsOnSave.mode": "problems",
+  "typescript.autoClosingTags": false,
+  "javascript.autoClosingTags": false,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+  "prettier.bracketSpacing": false
+}
