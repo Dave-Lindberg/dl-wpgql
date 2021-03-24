@@ -45,25 +45,36 @@ const FeaturedStories = () => {
     }
   `)
     const features = Object.values(data.allWpPost.nodes);
-    console.log(features);
+    
     // declare a new state variable, which we'll call "isActive"
     const [isActive, setIsActive] = useState(false);
+    
+    // add another state variable to track which item is clicked
+    const [selectedIndex, setSelectedIndex] = useState('')
 
-    const handleToggle = () => {
+    const handleToggle = (e, id) => {
+        e.preventDefault();
         setIsActive(!isActive);
+        setSelectedIndex(id);
     };
 
 
     const featureItems = features.map((feature) => 
     < LinkBox key = { feature.id }
-        className = { isActive ? "active" : "inactive" }
-        onClick = { handleToggle }
+        className = {
+            selectedIndex === feature.id && 
+            isActive ? "active" : "inactive" 
+        } 
+        onClick = {(e) =>  handleToggle(e, feature.id) } 
         backgroundColor = "brand.background"
         borderWidth = "1px"
         borderRadius = "md"
         borderColor = "brand.sand.100"
         color = "brand.grey.700"
-        m = "1rem" > 
+        m = "1rem" 
+        display = "grid"
+        templateRows = "auto auto auto"
+        templateColumns = "1fr"> 
         <GatsbyImage 
             image = { feature.featuredImage.node.localFile.childImageSharp.gatsbyImageData }
             aspectRatio = { 16 / 9 }
