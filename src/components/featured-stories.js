@@ -56,6 +56,8 @@ const FeaturedStories = () => {
         e.preventDefault();
         setIsActive(!isActive);
         setSelectedIndex(id);
+        console.log(isActive);
+        console.log(selectedIndex);
     };
 
 
@@ -63,8 +65,7 @@ const FeaturedStories = () => {
     < LinkBox key = { feature.id }
         className = {
             selectedIndex === feature.id && 
-            isActive ? "active" : "inactive" 
-        } 
+            isActive ? "active" : "inactive" } 
         onClick = {(e) =>  handleToggle(e, feature.id) } 
         backgroundColor = "brand.background"
         borderWidth = "1px"
@@ -79,9 +80,11 @@ const FeaturedStories = () => {
             image = { feature.featuredImage.node.localFile.childImageSharp.gatsbyImageData }
             aspectRatio = { 16 / 9 }
         />  
-        <Heading as = "h2"
+        <Heading 
+            as = "h2"
             size = "md"
-            p = ".5rem 1rem" >
+            p = ".5rem 1rem" 
+        >
             <LinkOverlay 
                 href = { feature.slug } > 
             </LinkOverlay> 
@@ -104,9 +107,30 @@ const FeaturedStories = () => {
     );
 
     return ( 
-        <Grid templateColumns = "1fr 1fr"
+        <Grid 
+            templateColumns = {{
+                base: "1fr",
+                md: "1fr 1fr"
+            }}
             templateRows = "auto"
             mb = "2rem" > 
+            <GridItem
+                colStart="1"
+                colEnd={{
+                    base: "2", 
+                    md: "3"
+                }}
+                justifySelf = "center"
+            >
+                <Heading 
+                    as="h3"
+                    display="GridItem"
+                    size = "sm"
+                    color = "brand.blue.700"
+                    >
+                        Featured Stories
+                </Heading>
+            </GridItem>
             { featureItems } 
         </ Grid >
     )

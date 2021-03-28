@@ -30,9 +30,8 @@ const item = {
 
 const AnimatedHeadline = () => {
     return (
-        <Box 
+        <GridItem 
             className="animated-headline" 
-            width="100vw"
             height="80vh"
             fontSize="125%"
             fontWeight={700}
@@ -41,7 +40,12 @@ const AnimatedHeadline = () => {
             justifyContent="center"
             textAlign="center"
             p="20% 20% 25%"
-        >
+            colStart="1"
+            colEnd={{
+                base: "2", 
+                md: "4"
+            }}
+                  >
             <MotionGrid 
                 className="animated-headline"
                 gridTemplateColumns="1fr"
@@ -189,7 +193,7 @@ const AnimatedHeadline = () => {
                     </a>
                 </MotionGridItem>                
             </MotionGrid>
-        </Box>
+        </GridItem>
     )
 }
 

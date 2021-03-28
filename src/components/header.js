@@ -16,7 +16,12 @@ const Header = ({ siteTitle }) => (
     borderColor="brand.olive.400"
     fontSize="110%"
     lineHeight="110%"
-  >
+    colStart="1"
+    colEnd={{
+      base: "2", 
+      md: "4"
+    }}
+>
     <Grid
         m={0}
         maxW="960px"
