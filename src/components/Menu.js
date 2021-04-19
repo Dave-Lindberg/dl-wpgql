@@ -38,7 +38,7 @@ const SiteMenu = () => {
             render={(data) => {
                 if(data.allWpMenuItem) {
                     const menuItems = data.allWpMenuItem.nodes
-                    console.log(data)
+                    // console.log(data)
 
                     return (
                         <Menu menuButton={

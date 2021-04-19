@@ -47,8 +47,7 @@ const Header = ({ siteTitle }) => (
           borderRadius="100%"
           p=".15rem"
           mr=".5rem"
-          colStart={1}
-          colSpan={1}
+          colSpan="1"
           height="2rem"
           width="2rem"
           display="flex"

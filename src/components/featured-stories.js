@@ -7,7 +7,15 @@ import {
     Heading,
     Text,
     Link,
-    LinkOverlay
+    LinkOverlay,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure
 } from "@chakra-ui/react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import "../styles/app-styles.css"
@@ -45,6 +53,7 @@ const FeaturedStories = () => {
     }
   `)
     const features = Object.values(data.allWpPost.nodes);
+    console.log(features);
     
     // declare a new state variable, which we'll call "isActive"
     const [isActive, setIsActive] = useState(false);
@@ -52,58 +61,101 @@ const FeaturedStories = () => {
     // add another state variable to track which item is clicked
     const [selectedIndex, setSelectedIndex] = useState('')
 
-    const handleToggle = (e, id) => {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
+    function handleToggle(e, id) {
         e.preventDefault();
         setIsActive(!isActive);
+        console.log("id: " + id);
+        console.log("id: " + typeof id);
         setSelectedIndex(id);
-        console.log(isActive);
-        console.log(selectedIndex);
+        console.log("isActive: " + isActive);
+        console.log("selectedIndex: " + selectedIndex);
+        console.log(typeof selectedIndex);
+        if(id===selectedIndex){onOpen(id)}; 
     };
 
 
     const featureItems = features.map((feature) => 
-    < LinkBox key = { feature.id }
-        className = {
-            selectedIndex === feature.id && 
-            isActive ? "active" : "inactive" } 
-        onClick = {(e) =>  handleToggle(e, feature.id) } 
-        backgroundColor = "brand.background"
-        borderWidth = "1px"
-        borderRadius = "md"
-        borderColor = "brand.sand.100"
-        color = "brand.grey.700"
-        m = "1rem" 
-        display = "grid"
-        templateRows = "auto auto auto"
-        templateColumns = "1fr"> 
-        <GatsbyImage 
-            image = { feature.featuredImage.node.localFile.childImageSharp.gatsbyImageData }
-            aspectRatio = { 16 / 9 }
-        />  
-        <Heading 
-            as = "h2"
-            size = "md"
-            p = ".5rem 1rem" 
+    <>
+
+        <LinkBox key = { feature.id.toString() }
+            className = { feature.id.toString(), "feature" }
+            onClick = {(e) =>  handleToggle(e, feature.id)} 
+            backgroundColor = "brand.background"
+            borderWidth = "1px"
+            borderRadius = "md"
+            borderColor = "brand.sand.100"
+            color = "brand.grey.700"
+            m = "1rem" 
+            display = "grid"
+            gridTemplateRows = "auto auto auto"
+            gridTemplateColumns = "1fr"> 
+            <GatsbyImage 
+                image = { feature.featuredImage.node.localFile.childImageSharp.gatsbyImageData }
+                aspectRatio = { 16 / 9 }
+            />  
+            <Heading 
+                as = "h2"
+                size = "md"
+                p = ".5rem 1rem" 
+            >
+                <LinkOverlay 
+                    href = { feature.slug } > 
+                </LinkOverlay> 
+                { feature.title } 
+            </Heading > 
+        </LinkBox>
+        
+        <Modal 
+            key = { feature.id.concat('-M') }
+            isOpen={isOpen} 
+            onClose={onClose} 
+            className = "modal" 
+            backgroundColor = "brand.background"
+            borderWidth = "1px"
+            borderRadius = "md"
+            borderColor = "brand.sand.100"
+            color = "brand.grey.700"
+            m = "1rem" 
         >
-            <LinkOverlay 
-                href = { feature.slug } > 
-            </LinkOverlay> 
-            { feature.title } 
-        </Heading > 
-        <Text p = ".5rem 1rem"
-            noOfLines = { 10 } 
-        > 
-            { feature.featureCardFields.shortDescription } 
-            < Link color = "brand.salmon.400"
-                fontWeight = { 700 }
-                pl = ".5rem"
-                whiteSpace = "nowrap" 
-                onClick = { handleToggle }
-            > 
-                { feature.featureCardFields.ctaText }
-            </Link> 
-        </Text > 
-    </LinkBox>
+            <ModalOverlay />
+            <ModalContent>
+                <GatsbyImage 
+                    image = { feature.featuredImage.node.localFile.childImageSharp.gatsbyImageData }
+                    aspectRatio = { 16 / 9 }
+                />  
+                <ModalHeader 
+                    as = "h2"
+                    size = "md"
+                    p = ".5rem 1rem" 
+                >
+                    <LinkOverlay 
+                        href = { feature.slug } > 
+                    </LinkOverlay> 
+                    { feature.title } 
+                </ModalHeader > 
+                <ModalCloseButton />
+                <ModalBody>
+                    <Text p = ".5rem 1rem"
+                        noOfLines = { 10 } 
+                    > 
+                        { feature.featureCardFields.shortDescription } 
+                    </Text > 
+                </ModalBody>
+                <ModalFooter>
+                    < Link color = "brand.salmon.400"
+                        fontWeight = { 700 }
+                        pl = ".5rem"
+                        whiteSpace = "nowrap" 
+                        onClick = { handleToggle }
+                    > 
+                        { feature.featureCardFields.ctaText }
+                    </Link> 
+                </ModalFooter>
+            </ModalContent>
+        </Modal>
+    </>
     );
 
     return ( 
