@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
   siteMetadata: {
     title: `Dave Lindberg`,
@@ -15,6 +18,13 @@ module.exports = {
          */
         url: `http://gatsbywpsource.local/graphql`,
         verbose: true,
+        debug: {
+          preview: true,
+          graphql: {
+            showQueryVarsOnError: true,
+            showQueryOnError: true,
+          },
+        },
       },
     },
     `gatsby-plugin-react-helmet`,

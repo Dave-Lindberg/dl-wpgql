@@ -1,0 +1,101 @@
+import React, { useState } from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import {
+    Text,
+    Link,
+    LinkOverlay,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+} from "@chakra-ui/react"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import "../styles/app-styles.css"
+
+function ChakraModal(feature) {
+    return (
+        <Modal 
+            key = { activeId }
+            isOpen={isOpen} 
+            onClose={onClose} 
+            className = {feature.title} 
+            backgroundColor = "brand.background"
+            borderWidth = "1px"
+            borderRadius = "md"
+            borderColor = "brand.sand.100"
+            color = "brand.grey.700"
+            m = "1rem" 
+        >
+        <ModalOverlay />
+        <ModalContent>
+            <GatsbyImage
+                image={getImage(feature.featuredImage?.node?.localFile)}
+                aspectRatio={16 / 9}
+                alt="This is alt text"
+            />
+            <ModalHeader 
+                as = "h2"
+                size = "md"
+                p = ".5rem 1rem" 
+            >
+                <LinkOverlay href = { feature.slug } > 
+                    { feature.title } 
+                </LinkOverlay> 
+            </ModalHeader > 
+            <ModalCloseButton />
+            <ModalBody>
+                <Text p = ".5rem 1rem"
+                    noOfLines = { 10 } 
+                > 
+                    { feature.featureCardFields.shortDescription } 
+                </Text > 
+            </ModalBody>
+            <ModalFooter>
+                < Link color = "brand.salmon.400"
+                    fontWeight = { 700 }
+                    pl = ".5rem"
+                    whiteSpace = "nowrap" 
+                    onClick = { handleToggle }
+                > 
+                    { feature.featureCardFields.ctaText }
+                </Link> 
+            </ModalFooter>
+        </ModalContent>
+    </Modal>      
+)}    
+
+return ( 
+    <div>
+        <Grid 
+            templateColumns = {{
+                base: "1fr",
+                md: "1fr 1fr"
+            }}
+            templateRows = "auto"
+            mb = "2rem" > 
+            <GridItem
+                colStart="1"
+                colEnd={{
+                    base: "2", 
+                    md: "3"
+                }}
+                justifySelf = "center"
+            >
+                <Heading 
+                    as="h3"
+                    display="GridItem"
+                    size = "sm"
+                    color = "brand.blue.700"
+                    >
+                        Featured Stories
+                </Heading>
+            </GridItem>
+            { featureItems } 
+        </Grid>
+        <ChakraModal />
+    </div>
+);
+}
