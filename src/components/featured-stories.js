@@ -46,17 +46,25 @@ export default function FeaturedStories()  {
 
     const features = Object.values(data.allWpPost.nodes);
     console.log(features);
-    const [ setActiveId] = useState();
+    const [ activeId, setActiveId] = useState();
     // const { isOpen, onOpen, onClose } = useDisclosure()
-  
+
+    function handleClick(featureId) {
+        setActiveId(featureId);
+        console.log( activeId );
+        // filter data to pull active record:
+        var activeFeature = (features.filter(function(item){
+            return item.id == activeId;
+        }));
+        console.log(activeFeature);
+    }
+
     const featureItems = features.map((feature) => (
         <div>
             <LinkBox 
                 key = { feature.id }
                 className = { feature.id.toString(), "feature" }
-                onClick = {function() {
-                    setActiveId(feature.id)
-                }} 
+                onClick = {() => { handleClick(feature.id) }}
                 backgroundColor = "brand.background"
                 borderWidth = "1px"
                 borderRadius = "md"
@@ -84,7 +92,6 @@ export default function FeaturedStories()  {
             </LinkBox>
         </div>
     ))
-    
     return ( 
         <div>
             <Grid 
